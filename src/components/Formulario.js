@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Error from "./Error";
+import PropTypes from "prop-types";
 
-function Formulario() {
+function Formulario({ setBusqueda }) {
 	const [termino, setTermino] = useState("");
 	const [error, setError] = useState(false);
 
@@ -13,6 +14,7 @@ function Formulario() {
 			return;
 		}
 		setError(false);
+		setBusqueda(termino);
 	};
 
 	return (
@@ -38,5 +40,9 @@ function Formulario() {
 		</form>
 	);
 }
+
+Formulario.propTypes = {
+	setBusqueda: PropTypes.func.isRequired,
+};
 
 export default Formulario;
